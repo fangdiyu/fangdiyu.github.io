@@ -90,16 +90,44 @@
   ul.news .d{color:var(--soft); font-size:14px; white-space:nowrap; font-variant-numeric:tabular-nums;}
 
   /* ---------- publications ---------- */
-  ol.pubs{margin:0; padding-left:0; list-style:none; counter-reset:p;}
-  ol.pubs > li{
-    counter-increment:p; position:relative;
-    padding:0 0 0 26px; margin:0 0 20px;
+  .pubs-note{font-size:14.4px; color:var(--muted); margin:0 0 22px; line-height:1.7;}
+  .pubs-note strong{font-weight:700; color:#000; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px;}
+
+  /* featured entry: looping video on the left, text on the right */
+  .pub-feat{
+    display:flex; gap:22px; align-items:flex-start;
+    margin:0 0 26px; padding:0 0 26px;
+    border-bottom:1px solid var(--rule);
   }
-  ol.pubs > li::before{
-    content:"[" counter(p) "]";
-    position:absolute; left:0; top:0;
-    color:var(--soft); font-size:13.5px; font-variant-numeric:tabular-nums;
+  .pub-feat:last-of-type{border-bottom:0; padding-bottom:0; margin-bottom:22px;}
+  .pub-media{
+    flex:0 0 32%; max-width:32%;
+    border-radius:9px; overflow:hidden;
+    background:#f2f4f7; border:1px solid var(--rule);
+    line-height:0;
   }
+  .pub-media video,.pub-media img{width:100%; height:auto; display:block;}
+  .pub-body{flex:1 1 auto; min-width:0;}
+  .ptitle-link{display:inline-block; text-decoration:none;}
+  .ptitle-link:hover{text-decoration:none;}
+  .ptitle-link .ptitle{color:var(--link); transition:color .15s;}
+  .ptitle-link:hover .ptitle{color:var(--link-hover); text-decoration:underline;}
+  .pub-links{font-size:14.2px; margin:7px 0 0; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;}
+  .pub-links a{margin-right:12px; white-space:nowrap;}
+
+  /* secondary list — text only */
+  .pubs-sub{
+    font-size:13px; font-weight:700; letter-spacing:.9px; text-transform:uppercase;
+    color:var(--soft); margin:30px 0 14px;
+  }
+  ul.pubs-compact{margin:0; padding-left:0; list-style:none;}
+  ul.pubs-compact > li{
+    position:relative; padding:0 0 0 20px; margin:0 0 16px;
+  }
+  ul.pubs-compact > li::before{
+    content:"▸"; position:absolute; left:0; top:0; color:var(--soft); font-size:13px;
+  }
+
   .ptitle{font-weight:700; margin:0 0 3px; line-height:1.5;}
   .authors{font-size:14.8px; color:#333; margin:0 0 4px; line-height:1.6;}
   .authors strong{font-weight:700; color:#000; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px;}
@@ -149,6 +177,8 @@
     ul.news .d{font-size:13px;}
     .ehead{flex-direction:column; gap:0;}
     table.sk td.k{width:120px;}
+    .pub-feat{flex-direction:column; gap:14px;}
+    .pub-media{flex:0 0 auto; max-width:100%; width:100%;}
   }
   @media print{
     .wrap{max-width:none; padding:0;}
@@ -233,93 +263,113 @@
 
   <!-- ============ PUBLICATIONS ============ -->
   <section>
-    <h2><span class="ico">📄</span>Publications</h2>
-    <p style="font-size:14.4px; color:var(--muted); margin-bottom:18px;">
-      Listed in order of relevance to robotics and embodied intelligence; publication status is
-      indicated on each entry. My name is <strong style="text-decoration:underline;">underlined</strong>.
+    <h2><span class="ico">📄</span>Selected Publications</h2>
+    <p class="pubs-note">
+      <sup>*</sup>Equal contribution. My name is <strong>underlined</strong>.
+      Click a paper title to open its project page.
     </p>
 
-    <ol class="pubs">
-
-      <!-- 1 -->
-      <li>
-        <p class="ptitle">TacEnvelope: A Plug-in Framework for Utilizing Tactile Envelope Feedback in RL Post-Training of VLA Policies</p>
+    <!-- ---------- featured 1: TacEnvelope ---------- -->
+    <div class="pub-feat">
+      <div class="pub-media">
+        <video autoplay loop muted playsinline preload="metadata" poster="files/tacenvelope.png">
+          <source src="files/tacenvelope.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="pub-body">
+        <a class="ptitle-link" href="https://huhuanzhang.github.io/TacEnvelope-web/" target="_blank" rel="noopener">
+          <p class="ptitle">TacEnvelope: A Plug-in Framework for Utilizing Tactile Envelope Feedback in RL Post-Training of VLA Policies</p>
+        </a>
         <p class="authors">
           Huanzhang Hu, Bo Chen, <strong>Fangdi Yu</strong>, Haoyi Zhang, Xianxin Lai, Jiahui Chen,
           Haijier Chen, Xiaoquan Sun, Dongchen Zheng, Yijun Hong, Zurui Chen, Wenqi Ge<sup>†</sup>,
           and Jiayu Chen<sup>†</sup>
         </p>
-        <p class="venue"><span class="tag rev">Under Review</span><em>Submitted to IEEE International Conference on Robotics and Automation (ICRA) 2027</em> · Third author</p>
+        <p class="venue"><span class="tag rev">Under Review</span><em>IEEE International Conference on Robotics and Automation (ICRA) 2027</em> · Third author</p>
         <p class="abstract">
           <b>Paper.</b> A plug-in framework that learns adaptive tactile force envelopes from successful
           demonstrations and converts tactile deviations into dense reward signals for online RL
           post-training of VLA policies on contact-rich manipulation. <b>Results.</b> On real-world tasks,
           DSRL USB-insertion success rose from 87.5% to 95% with time-to-success reduced from 20 s to 13 s.
         </p>
-      </li>
+        <p class="pub-links">
+          <a href="https://agentic-intelligence-lab.org/files/TacEnvelope.pdf" target="_blank" rel="noopener">[paper]</a>
+          <a href="https://huhuanzhang.github.io/TacEnvelope-web/" target="_blank" rel="noopener">[project]</a>
+          <a href="https://github.com/huhuanzhang/TacEnvelope-web" target="_blank" rel="noopener">[code]</a>
+        </p>
+      </div>
+    </div>
 
-      <!-- 2 -->
-      <li>
-        <p class="ptitle">TACROSS: An Efficient and Low-Cost Scalable Human Touch System Across Heterogeneous Tactile Sensors for Dexterous Robot Learning</p>
+    <!-- ---------- featured 2: TACROSS ---------- -->
+    <div class="pub-feat">
+      <div class="pub-media">
+        <video autoplay loop muted playsinline preload="metadata" poster="files/tacross.jpg">
+          <source src="files/tacross.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="pub-body">
+        <a class="ptitle-link" href="https://tacross-touch-project.github.io" target="_blank" rel="noopener">
+          <p class="ptitle">TACROSS: An Efficient and Low-Cost Scalable Human Touch System Across Heterogeneous Tactile Sensors for Dexterous Robot Learning</p>
+        </a>
         <p class="authors">
           Bo Chen<sup>*</sup>, Huanzhang Hu<sup>*</sup>, Junyang Ma, Bo Yue, <strong>Fangdi Yu</strong>,
           Haijier Chen, Xianxin Lai, Shuyu Pan, Zhen Yang, Xiaoquan Sun, Wenze Cui,
           Zhongliang Jiang, Shaopeng Liu<sup>†</sup>, and Jiayu Chen<sup>†</sup>
         </p>
-        <p class="venue"><span class="tag rev">Under Review</span><em>arXiv:2610.11945; submitted to IEEE International Conference on Robotics and Automation (ICRA) 2027</em> · Fifth author</p>
+        <p class="venue"><span class="tag rev">Under Review</span><em>arXiv:2610.11945; IEEE International Conference on Robotics and Automation (ICRA) 2027</em> · Fifth author</p>
         <p class="abstract">
           <b>Paper.</b> A scalable, low-cost human-touch data-collection system that aligns heterogeneous
           tactile sensors — piezoresistive human gloves and capacitive robot fingertips — into a shared
           contact-semantic space. It reduces data-collection cost by <b>95.7%</b> and increases collection
           speed by <b>3.5×</b>, releasing an open dataset of over <b>150 hours</b> of human tactile demonstrations.
         </p>
-      </li>
+        <p class="pub-links">
+          <a href="https://arxiv.org/abs/2610.11945" target="_blank" rel="noopener">[arxiv]</a>
+          <a href="https://tacross-touch-project.github.io" target="_blank" rel="noopener">[project]</a>
+        </p>
+      </div>
+    </div>
 
-      <!-- 3 -->
+    <!-- ---------- secondary list ---------- -->
+    <p class="pubs-sub">Other Publications</p>
+    <ul class="pubs-compact">
+
       <li>
         <p class="ptitle">A Multi-Objective Linear Programming Approach for Earth–Moon Hybrid Logistics Transportation</p>
-        <p class="authors">
-          <strong>Fangdi Yu</strong>, Zhongzhi Ke, and Shumin Wang
-        </p>
+        <p class="authors"><strong>Fangdi Yu</strong>, Zhongzhi Ke, and Shumin Wang</p>
         <p class="venue"><span class="tag pub">Accepted</span><em>2026 International Conference on Electronic Communication, Computer Engineering and Technology (ICCECT 2026)</em> · First author</p>
         <p class="abstract">
-          <b>Paper.</b> A three-step multi-objective optimisation framework for Earth–Moon hybrid logistics,
-          modelling cargo transfer among Earth orbit, the lunar surface, and intermediate transfer nodes,
-          trading off transportation cost, delivery time, and mission risk.
+          A three-step multi-objective optimisation framework for Earth–Moon hybrid logistics, modelling
+          cargo transfer among Earth orbit, the lunar surface, and intermediate transfer nodes, and trading
+          off transportation cost, delivery time, and mission risk.
         </p>
       </li>
 
-      <!-- 4 -->
       <li>
         <p class="ptitle">Extended Disturbance Observer Enhanced Quasi-Infinite-Horizon Nonlinear Model Predictive Control for Underwater Gliders</p>
-        <p class="authors">
-          Jiahui Lv, <strong>Fangdi Yu</strong>, and Tongfu He<sup>†</sup>
-        </p>
+        <p class="authors">Jiahui Lv, <strong>Fangdi Yu</strong>, and Tongfu He<sup>†</sup></p>
         <p class="venue"><span class="tag pub">Published</span><em>Proceedings of the 5th International Conference on Autonomous Unmanned Systems (ICAUS 2025)</em>, Lecture Notes in Electrical Engineering, vol. 1574, Springer, 2026, pp. 318–328 · Second author (of three) · <a href="https://doi.org/10.1007/978-981-95-7641-8_30" target="_blank" rel="noopener">DOI</a></p>
         <p class="abstract">
-          <b>Paper.</b> An extended disturbance observer (EDO) enhanced quasi-infinite-horizon NMPC scheme
-          for underwater glider pitch motion, in which the observer estimates lumped disturbances online
-          and compensates for them inside the predictive controller, improving tracking accuracy and
-          disturbance rejection over standard NMPC.
+          An extended disturbance observer (EDO) enhanced quasi-infinite-horizon NMPC scheme for underwater
+          glider pitch motion, in which the observer estimates lumped disturbances online and compensates
+          for them inside the predictive controller, improving tracking accuracy and disturbance rejection
+          over standard NMPC.
         </p>
       </li>
 
-      <!-- 5 -->
       <li>
         <p class="ptitle">Super-Twisting Sliding Mode Control of ROV Systems with Prescribed Performance under Actuator Saturation and Unknown Disturbances</p>
-        <p class="authors">
-          Tongfu He, Shiyu Wang, Dalei Song, Weicheng Sun, Qianli Jiang, and <strong>Fangdi Yu</strong>
-        </p>
+        <p class="authors">Tongfu He, Shiyu Wang, Dalei Song, Weicheng Sun, Qianli Jiang, and <strong>Fangdi Yu</strong></p>
         <p class="venue"><span class="tag pub">Published</span><em>2025 40th Youth Academic Annual Conference of Chinese Association of Automation (YAC)</em>, Zhengzhou, China, 2025 · Sixth author · <a href="https://doi.org/10.1109/YAC66630.2025.11149753" target="_blank" rel="noopener">DOI</a></p>
         <p class="abstract">
-          <b>Paper.</b> A composite ROV controller integrating super-twisting sliding mode control (STSMC)
-          with prescribed performance control (PPC), an extended state observer (ESO) for online
-          disturbance estimation, and an anti-saturation auxiliary system. Simulations show reduced
-          chattering, faster convergence, and improved tracking precision over conventional methods.
+          A composite ROV controller integrating super-twisting sliding mode control (STSMC) with
+          prescribed performance control (PPC), an extended state observer (ESO) for online disturbance
+          estimation, and an anti-saturation auxiliary system. Simulations show reduced chattering, faster
+          convergence, and improved tracking precision over conventional methods.
         </p>
       </li>
 
-    </ol>
+    </ul>
   </section>
 
   <!-- ============ RESEARCH EXPERIENCE ============ -->

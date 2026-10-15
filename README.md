@@ -17,12 +17,29 @@ homepage/
 ├── assets/
 │   └── photo.jpg              ← YOU MUST ADD (square, ≥500×500px recommended)
 └── files/
-    └── CV_Fangdi_Yu.pdf       ← YOU MUST ADD (the CV PDF)
+    ├── CV_Fangdi_Yu.pdf       ← YOU MUST ADD (the CV PDF)
+    ├── tacenvelope.mp4        ← looping thumbnail video (3.7 MB)
+    ├── tacenvelope.png        ← its poster frame
+    ├── tacross.mp4            ← looping thumbnail video (2.7 MB)
+    └── tacross.jpg            ← its poster frame
 ```
 
 Both `assets/` and `files/` are already created. Just drop your files in.
 If `assets/photo.jpg` is missing, the page automatically falls back to a grey
 circle showing "FY" — so nothing breaks.
+
+### Where the videos came from
+
+The two thumbnail videos are copies of assets already published by the projects
+themselves, downloaded so the page loads from a single origin:
+
+| Local file | Source |
+|---|---|
+| `tacross.mp4` / `tacross.jpg` | `https://tacross-touch-project.github.io/assets/slide1-animation.{mp4,jpg}` |
+| `tacenvelope.mp4` | `https://huhuanzhang.github.io/TacEnvelope-web/assets/videos/task_usb.mp4` |
+| `tacenvelope.png` | `https://huhuanzhang.github.io/TacEnvelope-web/assets/images/task_usb_row.png` |
+
+Total media weight ≈ 7.2 MB — well under GitHub's 100 MB per-file limit.
 
 ---
 
@@ -97,14 +114,40 @@ All content is plain HTML inside `<section>` blocks in `index.html`, in this ord
 2. `ABOUT` — three paragraphs
 3. `NEWS` — reverse-chronological list (`<span class="d">` is the date column)
 4. `RESEARCH INTERESTS`
-5. `PUBLICATIONS` — numbered list, full author lists with your name in `<strong>`
+5. `SELECTED PUBLICATIONS` — two featured entries (looping video + clickable title) followed by an "Other Publications" compact list
 6. `RESEARCH EXPERIENCE`
 7. `EDUCATION`
 8. `HONORS & AWARDS`
 9. `SKILLS`
 
-**Adding a publication:** copy an existing `<li>` block inside `<ol class="pubs">`
-and edit it. Use `<span class="tag pub">Published</span>` or
+**Featured publication entry** — a `.pub-feat` block is a two-column flex row:
+
+```html
+<div class="pub-feat">
+  <div class="pub-media">                    <!-- 32% wide -->
+    <video autoplay loop muted playsinline preload="metadata" poster="files/X.png">
+      <source src="files/X.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="pub-body">                     <!-- remaining 68% -->
+    <a class="ptitle-link" href="PROJECT_URL" target="_blank" rel="noopener">
+      <p class="ptitle">Paper title</p>      <!-- clicking this opens PROJECT_URL -->
+    </a>
+    <p class="authors">…</p>
+    <p class="venue">…</p>
+    <p class="abstract">…</p>
+    <p class="pub-links"><a href="…">[paper]</a><a href="…">[project]</a></p>
+  </div>
+</div>
+```
+
+The `<video>` attributes matter: `autoplay loop muted playsinline` — without
+`muted`, browsers block autoplay; without `playsinline`, iOS opens fullscreen.
+Below 660px the row stacks vertically and the video goes full width.
+
+**Compact publication entry** — copy one `<li>` inside `<ul class="pubs-compact">`.
+
+Use `<span class="tag pub">Published</span>` or
 `<span class="tag rev">Under Review</span>` for the status chip.
 
 **Adding a news item:** copy one `<li>` inside `<ul class="news">`. Keep the
