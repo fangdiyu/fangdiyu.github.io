@@ -17,7 +17,6 @@ homepage/
 ├── assets/
 │   └── photo.jpg              ← YOU MUST ADD (square, ≥500×500px recommended)
 └── files/
-    ├── CV_Fangdi_Yu.pdf       ← YOU MUST ADD (the CV PDF)
     ├── tacenvelope.mp4        ← looping thumbnail video (3.7 MB)
     ├── tacenvelope.png        ← its poster frame
     ├── tacross.mp4            ← looping thumbnail video (2.7 MB)
@@ -63,12 +62,12 @@ Search `index.html` for these strings and replace them:
 |---|---|---|
 | `https://github.com/your-username` | — | ✅ done (`yuyfrank`) |
 | `https://scholar.google.com/citations?user=YOUR_ID` | your Google Scholar URL | ⬜ TODO |
-| `https://orcid.org/0000-0000-0000-0000` | your ORCID iD (or delete the link) | ⬜ TODO |
 | `assets/photo.jpg` | your photo (keep the filename) | ⬜ TODO |
-| `files/CV_Fangdi_Yu.pdf` | your CV PDF (keep the filename) | ⬜ TODO |
 
-**Don't have a Google Scholar or ORCID profile yet?** Create them — both are free
-and take five minutes. An ORCID iD is genuinely useful on a research CV, and
+The ORCID and CV header links were removed on request. The email address is
+written out in full rather than shown as the word "Email".
+
+**Don't have a Google Scholar profile yet?** Create one — free, five minutes.
 Google Scholar will auto-link your papers once they're indexed.
 
 ### Publishing updates
