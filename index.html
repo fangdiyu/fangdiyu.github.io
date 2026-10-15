@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fangdi Yu | 余方地</title>
+<meta name="description" content="Fangdi Yu (余方地) — undergraduate in Automation at Ocean University of China. Robot learning, tactile sensing, and control of autonomous marine systems.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+
+<style>
+  :root{
+    --ink:#1b1b1b;
+    --muted:#6b7280;
+    --soft:#8b93a1;
+    --link:#1a5fb4;
+    --link-hover:#0b3f80;
+    --rule:#e6e8ec;
+    --chip-bg:#eef2f7;
+    --chip-ink:#3c4a5c;
+    --maxw:900px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:#fff;
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size:16px;
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:52px 26px 70px;}
+
+  a{color:var(--link); text-decoration:none;}
+  a:hover{color:var(--link-hover); text-decoration:underline;}
+
+  /* ---------- header ---------- */
+  header.hero{
+    display:flex; align-items:center; gap:36px;
+    justify-content:space-between; margin-bottom:34px;
+  }
+  .hero-text{flex:1 1 auto; min-width:0;}
+  h1{
+    font-size:31px; font-weight:700; letter-spacing:-.4px;
+    margin:0 0 6px; line-height:1.25;
+  }
+  h1 .cn{font-size:22px; font-weight:500; color:var(--muted); margin-left:8px; letter-spacing:0;}
+  .role{font-size:16.5px; color:var(--ink); margin:0 0 2px; font-weight:600;}
+  .affil{font-size:15.5px; color:var(--muted); margin:0 0 12px;}
+  .quicklinks{font-size:15px; color:var(--muted); margin:0; line-height:1.9;}
+  .quicklinks a{white-space:nowrap;}
+  .quicklinks .sep{color:#c9ced6; margin:0 7px;}
+
+  .photo-wrap{flex:0 0 auto;}
+  .photo{
+    width:186px; height:186px; object-fit:cover;
+    border-radius:50%; border:1px solid var(--rule);
+    display:block;
+  }
+  .photo-fallback{
+    width:186px; height:186px; border-radius:50%;
+    border:1px solid var(--rule); background:var(--chip-bg);
+    display:none; align-items:center; justify-content:center;
+    font-size:50px; font-weight:600; color:#9aa6b6; letter-spacing:1px;
+  }
+
+  /* ---------- sections ---------- */
+  section{margin-top:38px;}
+  h2{
+    font-size:19px; font-weight:700; letter-spacing:-.2px;
+    margin:0 0 14px; padding-bottom:7px;
+    border-bottom:1px solid var(--rule);
+  }
+  h2 .ico{margin-right:7px;}
+  p{margin:0 0 11px;}
+
+  ul.plain{margin:0; padding-left:0; list-style:none;}
+  ul.plain > li{position:relative; padding-left:17px; margin:0 0 7px;}
+  ul.plain > li::before{
+    content:"▸"; position:absolute; left:0; top:0; color:#b8c0cc; font-size:13px;
+  }
+
+  /* ---------- news ---------- */
+  ul.news{margin:0; padding:0; list-style:none;}
+  ul.news li{
+    display:grid; grid-template-columns:92px 1fr; gap:14px;
+    margin:0 0 7px; align-items:baseline;
+  }
+  ul.news .d{color:var(--soft); font-size:14px; white-space:nowrap; font-variant-numeric:tabular-nums;}
+
+  /* ---------- publications ---------- */
+  ol.pubs{margin:0; padding-left:0; list-style:none; counter-reset:p;}
+  ol.pubs > li{
+    counter-increment:p; position:relative;
+    padding:0 0 0 26px; margin:0 0 20px;
+  }
+  ol.pubs > li::before{
+    content:"[" counter(p) "]";
+    position:absolute; left:0; top:0;
+    color:var(--soft); font-size:13.5px; font-variant-numeric:tabular-nums;
+  }
+  .ptitle{font-weight:700; margin:0 0 3px; line-height:1.5;}
+  .authors{font-size:14.8px; color:#333; margin:0 0 4px; line-height:1.6;}
+  .authors strong{font-weight:700; color:#000; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px;}
+  .venue{font-size:14.8px; color:var(--muted); margin:0 0 5px;}
+  .venue em{font-style:italic;}
+  .tag{
+    display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.3px;
+    padding:1px 7px; border-radius:4px; margin-right:7px;
+    background:var(--chip-bg); color:var(--chip-ink);
+    text-transform:uppercase; vertical-align:1.5px;
+    font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .tag.pub{background:#e7f0e9; color:#2f5d3f;}
+  .tag.rev{background:#f2ece4; color:#6b5535;}
+  .abstract{font-size:14.6px; color:#4b5563; margin:4px 0 0; line-height:1.62;}
+  .abstract b{color:#1f2937;}
+
+  /* ---------- experience / education ---------- */
+  .entry{margin:0 0 20px;}
+  .entry:last-child{margin-bottom:2px;}
+  .ehead{display:flex; justify-content:space-between; align-items:baseline; gap:16px;}
+  .etitle{font-weight:700;}
+  .edate{font-size:14px; color:var(--soft); white-space:nowrap; font-variant-numeric:tabular-nums;}
+  .esub{font-size:14.8px; color:var(--muted); margin:1px 0 6px;}
+
+  /* ---------- skills ---------- */
+  table.sk{width:100%; border-collapse:collapse; font-size:15.3px;}
+  table.sk td{padding:4px 0; vertical-align:top;}
+  table.sk td.k{width:172px; font-weight:600; color:#3c4a5c; white-space:nowrap;}
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:52px; padding-top:18px; border-top:1px solid var(--rule);
+    font-size:13.5px; color:var(--soft); text-align:center; line-height:1.9;
+  }
+  footer a{color:var(--soft); text-decoration:underline;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:660px){
+    .wrap{padding:34px 20px 56px;}
+    header.hero{flex-direction:column-reverse; align-items:flex-start; gap:22px;}
+    .photo, .photo-fallback{width:132px; height:132px;}
+    .photo-fallback{font-size:38px;}
+    h1{font-size:26px;}
+    h1 .cn{display:block; margin:4px 0 0; font-size:19px;}
+    ul.news li{grid-template-columns:1fr; gap:0;}
+    ul.news .d{font-size:13px;}
+    .ehead{flex-direction:column; gap:0;}
+    table.sk td.k{width:120px;}
+  }
+  @media print{
+    .wrap{max-width:none; padding:0;}
+    section{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ HEADER ============ -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Fangdi Yu <span class="cn">余方地</span></h1>
+      <p class="role">B.Eng. Candidate in Automation</p>
+      <p class="affil">College of Engineering, Ocean University of China</p>
+      <p class="quicklinks">
+        <a href="mailto:yufangdi1530@163.com">Email</a><span class="sep">|</span>
+        <a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span>
+        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a><span class="sep">|</span>
+        <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">ORCID</a><span class="sep">|</span>
+        <a href="files/CV_Fangdi_Yu.pdf">CV</a>
+      </p>
+    </div>
+
+    <div class="photo-wrap">
+      <img class="photo" src="assets/photo.jpg" alt="Fangdi Yu"
+           onerror="this.style.display='none';document.getElementById('pf').style.display='flex';">
+      <div class="photo-fallback" id="pf">FY</div>
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section>
+    <h2><span class="ico">👋</span>About Me</h2>
+    <p>
+      I am an undergraduate student in Automation at the College of Engineering,
+      <a href="https://www.ouc.edu.cn/" target="_blank" rel="noopener">Ocean University of China</a>
+      (B.Eng. expected June 2027). My research lies at the intersection of
+      <b>robot learning</b> and <b>tactile sensing</b>: I am currently a research intern at the
+      <a href="https://www.dase.hku.hk/" target="_blank" rel="noopener">Agentic Intelligence Lab</a>,
+      Department of Data and Systems Engineering,
+      <a href="https://www.hku.hk/" target="_blank" rel="noopener">The University of Hong Kong</a>,
+      where I work on tactile-glove software, synchronised multimodal data-collection pipelines,
+      and the training and real-robot deployment of ACT and Vision-Language-Action (VLA) policies.
+    </p>
+    <p>
+      In parallel, I work on the <b>control of autonomous marine and underwater systems</b> —
+      underwater gliders, remotely operated vehicles, and bio-inspired underwater robots —
+      with a focus on disturbance-observer-based and prescribed-performance control under
+      actuator saturation and unknown disturbances.
+    </p>
+    <p>
+      I am applying to the <b>MSc(Eng) in Robotics and Intelligent Systems</b> at HKU,
+      with the goal of building embodied systems that can perceive contact and act reliably
+      in unstructured environments.
+    </p>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section>
+    <h2><span class="ico">🔥</span>News</h2>
+    <ul class="news">
+      <li><span class="d">Sept. 2026</span><span>Two papers on tactile sensing for dexterous manipulation — <em>TacEnvelope</em> and <em>TACROSS</em> — were submitted to <b>ICRA 2027</b>.</span></li>
+      <li><span class="d">May 2026</span><span>Started a research internship at the <b>Agentic Intelligence Lab</b>, Department of Data and Systems Engineering, The University of Hong Kong.</span></li>
+      <li><span class="d">May 2026</span><span>Paper on disturbance-observer-based NMPC for underwater gliders published in <b>Springer LNEE, vol. 1574</b> (ICAUS 2025).</span></li>
+      <li><span class="d">Sept. 2025</span><span>Paper on super-twisting sliding mode control of ROVs published in <b>IEEE Xplore</b> (YAC 2025).</span></li>
+      <li><span class="d">Jun. 2025</span><span>Joined the Chinese Society of Naval Architects and Marine Engineers (CSNAME) as a Student Member.</span></li>
+      <li><span class="d">May 2025</span><span>Joined <b>Prof. Tongfu He's Laboratory</b> at Ocean University of China as an undergraduate researcher.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ RESEARCH INTERESTS ============ -->
+  <section>
+    <h2><span class="ico">🎯</span>Research Interests</h2>
+    <ul class="plain">
+      <li><b>Robot learning &amp; embodied intelligence</b> — imitation learning, ACT / VLA policies, reinforcement-learning post-training, real-robot deployment.</li>
+      <li><b>Tactile sensing &amp; multimodal perception</b> — tactile-glove hardware and software, heterogeneous sensor alignment, synchronised tactile–visual–proprioceptive data collection.</li>
+      <li><b>Control of autonomous marine systems</b> — nonlinear MPC, disturbance observers, sliding mode and prescribed-performance control, underwater vehicles.</li>
+    </ul>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section>
+    <h2><span class="ico">📄</span>Publications</h2>
+    <p style="font-size:14.4px; color:var(--muted); margin-bottom:18px;">
+      Listed in order of relevance to robotics and embodied intelligence; publication status is
+      indicated on each entry. My name is <strong style="text-decoration:underline;">underlined</strong>.
+    </p>
+
+    <ol class="pubs">
+
+      <!-- 1 -->
+      <li>
+        <p class="ptitle">TacEnvelope: A Plug-in Framework for Utilizing Tactile Envelope Feedback in RL Post-Training of VLA Policies</p>
+        <p class="authors">
+          Huanzhang Hu, Bo Chen, <strong>Fangdi Yu</strong>, Haoyi Zhang, Xianxin Lai, Jiahui Chen,
+          Haijier Chen, Xiaoquan Sun, Dongchen Zheng, Yijun Hong, Zurui Chen, Wenqi Ge<sup>†</sup>,
+          and Jiayu Chen<sup>†</sup>
+        </p>
+        <p class="venue"><span class="tag rev">Under Review</span><em>Submitted to IEEE International Conference on Robotics and Automation (ICRA) 2027</em> · Third author</p>
+        <p class="abstract">
+          <b>Paper.</b> A plug-in framework that learns adaptive tactile force envelopes from successful
+          demonstrations and converts tactile deviations into dense reward signals for online RL
+          post-training of VLA policies on contact-rich manipulation. <b>Results.</b> On real-world tasks,
+          DSRL USB-insertion success rose from 87.5% to 95% with time-to-success reduced from 20 s to 13 s.
+        </p>
+      </li>
+
+      <!-- 2 -->
+      <li>
+        <p class="ptitle">TACROSS: An Efficient and Low-Cost Scalable Human Touch System Across Heterogeneous Tactile Sensors for Dexterous Robot Learning</p>
+        <p class="authors">
+          Bo Chen<sup>*</sup>, Huanzhang Hu<sup>*</sup>, Junyang Ma, Bo Yue, <strong>Fangdi Yu</strong>,
+          Haijier Chen, Xianxin Lai, Shuyu Pan, Zhen Yang, Xiaoquan Sun, Wenze Cui,
+          Zhongliang Jiang, Shaopeng Liu<sup>†</sup>, and Jiayu Chen<sup>†</sup>
+        </p>
+        <p class="venue"><span class="tag rev">Under Review</span><em>arXiv:2610.11945; submitted to IEEE International Conference on Robotics and Automation (ICRA) 2027</em> · Fifth author</p>
+        <p class="abstract">
+          <b>Paper.</b> A scalable, low-cost human-touch data-collection system that aligns heterogeneous
+          tactile sensors — piezoresistive human gloves and capacitive robot fingertips — into a shared
+          contact-semantic space. It reduces data-collection cost by <b>95.7%</b> and increases collection
+          speed by <b>3.5×</b>, releasing an open dataset of over <b>150 hours</b> of human tactile demonstrations.
+        </p>
+      </li>
+
+      <!-- 3 -->
+      <li>
+        <p class="ptitle">A Multi-Objective Linear Programming Approach for Earth–Moon Hybrid Logistics Transportation</p>
+        <p class="authors">
+          <strong>Fangdi Yu</strong>, Zhongzhi Ke, and Shumin Wang
+        </p>
+        <p class="venue"><span class="tag pub">Accepted</span><em>2026 International Conference on Electronic Communication, Computer Engineering and Technology (ICCECT 2026)</em> · First author</p>
+        <p class="abstract">
+          <b>Paper.</b> A three-step multi-objective optimisation framework for Earth–Moon hybrid logistics,
+          modelling cargo transfer among Earth orbit, the lunar surface, and intermediate transfer nodes,
+          trading off transportation cost, delivery time, and mission risk.
+        </p>
+      </li>
+
+      <!-- 4 -->
+      <li>
+        <p class="ptitle">Extended Disturbance Observer Enhanced Quasi-Infinite-Horizon Nonlinear Model Predictive Control for Underwater Gliders</p>
+        <p class="authors">
+          Jiahui Lv, <strong>Fangdi Yu</strong>, and Tongfu He<sup>†</sup>
+        </p>
+        <p class="venue"><span class="tag pub">Published</span><em>Proceedings of the 5th International Conference on Autonomous Unmanned Systems (ICAUS 2025)</em>, Lecture Notes in Electrical Engineering, vol. 1574, Springer, 2026, pp. 318–328 · Second author (of three) · <a href="https://doi.org/10.1007/978-981-95-7641-8_30" target="_blank" rel="noopener">DOI</a></p>
+        <p class="abstract">
+          <b>Paper.</b> An extended disturbance observer (EDO) enhanced quasi-infinite-horizon NMPC scheme
+          for underwater glider pitch motion, in which the observer estimates lumped disturbances online
+          and compensates for them inside the predictive controller, improving tracking accuracy and
+          disturbance rejection over standard NMPC.
+        </p>
+      </li>
+
+      <!-- 5 -->
+      <li>
+        <p class="ptitle">Super-Twisting Sliding Mode Control of ROV Systems with Prescribed Performance under Actuator Saturation and Unknown Disturbances</p>
+        <p class="authors">
+          Tongfu He, Shiyu Wang, Dalei Song, Weicheng Sun, Qianli Jiang, and <strong>Fangdi Yu</strong>
+        </p>
+        <p class="venue"><span class="tag pub">Published</span><em>2025 40th Youth Academic Annual Conference of Chinese Association of Automation (YAC)</em>, Zhengzhou, China, 2025 · Sixth author · <a href="https://doi.org/10.1109/YAC66630.2025.11149753" target="_blank" rel="noopener">DOI</a></p>
+        <p class="abstract">
+          <b>Paper.</b> A composite ROV controller integrating super-twisting sliding mode control (STSMC)
+          with prescribed performance control (PPC), an extended state observer (ESO) for online
+          disturbance estimation, and an anti-saturation auxiliary system. Simulations show reduced
+          chattering, faster convergence, and improved tracking precision over conventional methods.
+        </p>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- ============ RESEARCH EXPERIENCE ============ -->
+  <section>
+    <h2><span class="ico">🔬</span>Research Experience</h2>
+
+    <div class="entry">
+      <div class="ehead">
+        <span class="etitle">The University of Hong Kong — Agentic Intelligence Lab</span>
+        <span class="edate">May 2026 – Present</span>
+      </div>
+      <div class="esub">Research Intern, Department of Data and Systems Engineering · Hong Kong / Shenzhen</div>
+      <ul class="plain">
+        <li>Developed the software for a <b>tactile glove</b> and built a <b>synchronised multimodal data-collection system</b> integrating tactile pressure signals with RGB video, hand/wrist pose, and task labels.</li>
+        <li>Cleaned and curated the collected dataset; trained <b>ACT</b> and <b>VLA</b> models, deployed the resulting policies on physical robots, and conducted real-world manipulation experiments.</li>
+        <li>Benchmarked <b>HaMeR</b> for monocular 3D hand reconstruction, analysing failure modes under occlusion, viewpoint shifts, and complex hand poses.</li>
+        <li>Built a real-time <b>PyQt</b> visualisation interface for the tactile glove with pressure-map display, hand-mask registration, and live sensor streaming.</li>
+        <li>Contributed to experimental analysis, manuscript writing, and figure preparation for two papers submitted to <b>ICRA 2027</b>.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="ehead">
+        <span class="etitle">Ocean University of China — Prof. Tongfu He's Laboratory</span>
+        <span class="edate">May 2025 – Present</span>
+      </div>
+      <div class="esub">Undergraduate Researcher · Qingdao, China</div>
+      <ul class="plain">
+        <li><b>Coral-Planting Robot for Marine Ecological Restoration</b> <span style="color:var(--soft); font-size:14px;">(Project Lead, May 2025 – Present)</span> — led the full-cycle development of a coral-planting underwater robot with a belt-based continuous seed-delivery mechanism; built a <b>PX4</b>-based teleoperation architecture (Orange Pi, STM32, QGroundControl) and achieved a <b>300% increase in seeding efficiency</b>. <b>First Inventor, invention patent.</b></li>
+        <li><b>Biomimetic Underwater Robot — Yaw–Pitch Attitude Control</b> <span style="color:var(--soft); font-size:14px;">(May 2025 – Apr. 2026)</span> — contributed to the embedded implementation and experimental validation of a <b>backstepping-based attitude-control framework</b> for a fin-propelled underwater robot; integrated IMU feedback and C-based control routines, and evaluated transient response, steady-state error, and PID/backstepping performance.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section>
+    <h2><span class="ico">🎓</span>Education</h2>
+    <div class="entry">
+      <div class="ehead">
+        <span class="etitle">Ocean University of China</span>
+        <span class="edate">Sept. 2023 – Jun. 2027 (expected)</span>
+      </div>
+      <div class="esub">B.Eng. in Automation, College of Engineering · Qingdao, China</div>
+      <ul class="plain">
+        <li><b>GPA:</b> 3.45 / 4.0 &nbsp;·&nbsp; <b>Major rank:</b> 26 / 101</li>
+        <li><b>Selected coursework:</b> Automatic Control Theory (91.3), Computer Networks (93.5), Signals and Systems, Digital Signal Processing, Embedded Systems, Sensors and Measurement Technology, Linear Algebra, Probability and Statistics, MATLAB Program Design and Simulation (100)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ HONORS ============ -->
+  <section>
+    <h2><span class="ico">🏆</span>Honors &amp; Awards</h2>
+    <ul class="plain">
+      <li><b>Second Prize</b> — Creative Technology Innovation Track, 6th International Marine Technology and Ocean Science Innovation Competition, 2025</li>
+      <li><b>Third Prize</b> — China College Students Mechanical Engineering Innovation and Creativity Competition, 2025</li>
+      <li><b>Honourable Mention</b> — Mathematical Contest in Modeling (MCM), 2026</li>
+      <li><b>Honor Scholarship</b> — Ocean University of China, 2024 &amp; 2025</li>
+    </ul>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section>
+    <h2><span class="ico">🛠️</span>Technical Skills</h2>
+    <table class="sk">
+      <tr><td class="k">Programming</td><td>Python, C / C++, MATLAB</td></tr>
+      <tr><td class="k">Robot Learning</td><td>PyTorch, ACT, Vision-Language-Action (VLA) models, imitation learning, reinforcement-learning post-training</td></tr>
+      <tr><td class="k">Control &amp; Modelling</td><td>MATLAB/Simulink, nonlinear model predictive control (NMPC), disturbance observers, sliding mode control, prescribed performance control, backstepping control</td></tr>
+      <tr><td class="k">Robotics Platforms</td><td>PX4, QGroundControl, STM32, Orange Pi, IMU sensors, PyQt</td></tr>
+    </table>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <p style="margin:0 0 4px;">
+      <a href="mailto:yufangdi1530@163.com">yufangdi1530@163.com</a> &nbsp;·&nbsp;
+      <a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+      <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a>
+    </p>
+    <p style="margin:0;">Last updated: October 2026 &nbsp;·&nbsp; Template inspired by the academic homepage style of Jon Barron.</p>
+  </footer>
+
+</div>
+</body>
+</html>

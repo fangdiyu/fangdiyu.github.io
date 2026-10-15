@@ -1,0 +1,4 @@
+Put your photo here, named exactly: photo.jpg
+
+Recommended: square image, at least 500x500 px (it is displayed as a 186px circle).
+If this file is missing, the page falls back to a grey circle showing "FY".

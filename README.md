@@ -1,0 +1,130 @@
+# Personal Homepage — Fangdi Yu
+
+A single-file academic homepage in the style of the classic **Jon Barron** template
+(the de-facto standard for robotics/CS student homepages), with a **News timeline**
+borrowed from HKU DASE MPhil homepages.
+
+Everything lives in **one file**: `index.html`. No build step, no Jekyll, no dependencies.
+
+---
+
+## 1. Files
+
+```
+homepage/
+├── index.html                 ← the entire site
+├── README.md                  ← this file
+├── assets/
+│   └── photo.jpg              ← YOU MUST ADD (square, ≥500×500px recommended)
+└── files/
+    └── CV_Fangdi_Yu.pdf       ← YOU MUST ADD (the CV PDF)
+```
+
+Both `assets/` and `files/` are already created. Just drop your files in.
+If `assets/photo.jpg` is missing, the page automatically falls back to a grey
+circle showing "FY" — so nothing breaks.
+
+---
+
+## 2. Before you publish — replace the placeholders
+
+Search `index.html` for these strings and replace them:
+
+| Placeholder | Replace with | Appears in |
+|---|---|---|
+| `https://github.com/your-username` | your GitHub URL | header + footer |
+| `https://scholar.google.com/citations?user=YOUR_ID` | your Google Scholar URL | header + footer |
+| `https://orcid.org/0000-0000-0000-0000` | your ORCID iD (or delete the link) | header |
+| `assets/photo.jpg` | your photo (keep the filename) | header |
+| `files/CV_Fangdi_Yu.pdf` | your CV PDF (keep the filename) | header |
+
+**Don't have a Google Scholar or ORCID profile yet?** Create them — both are free
+and take five minutes. An ORCID iD is genuinely useful on a research CV, and
+Google Scholar will auto-link your papers once they're indexed.
+
+---
+
+## 3. Publish on GitHub Pages (5 minutes)
+
+### Option A — user site (`username.github.io`)
+
+The URL will be `https://your-username.github.io`.
+
+```bash
+# 1. Create a repo named exactly: your-username.github.io
+# 2. In that repo folder:
+git init
+cp -r /path/to/homepage/* .      # copy index.html, assets/, files/
+git add .
+git commit -m "Add personal homepage"
+git branch -M main
+git remote add origin https://github.com/your-username/your-username.github.io.git
+git push -u origin main
+```
+
+Then: **Settings → Pages → Source: Deploy from a branch → Branch: `main` / `root` → Save.**
+Live in ~1 minute at `https://your-username.github.io`.
+
+### Option B — project site
+
+The URL will be `https://your-username.github.io/repo-name/`.
+
+Same steps, but the repo can have any name, and enable Pages the same way.
+Note that relative paths (`assets/photo.jpg`) already work correctly in this case.
+
+### Custom domain
+
+Add a file named `CNAME` containing your domain (e.g. `fangdiyu.com`), then
+configure a CNAME DNS record pointing to `your-username.github.io`.
+
+---
+
+## 4. Editing content later
+
+All content is plain HTML inside `<section>` blocks in `index.html`, in this order:
+
+1. `HEADER` — name, title, affiliation, links, photo
+2. `ABOUT` — three paragraphs
+3. `NEWS` — reverse-chronological list (`<span class="d">` is the date column)
+4. `RESEARCH INTERESTS`
+5. `PUBLICATIONS` — numbered list, full author lists with your name in `<strong>`
+6. `RESEARCH EXPERIENCE`
+7. `EDUCATION`
+8. `HONORS & AWARDS`
+9. `SKILLS`
+
+**Adding a publication:** copy an existing `<li>` block inside `<ol class="pubs">`
+and edit it. Use `<span class="tag pub">Published</span>` or
+`<span class="tag rev">Under Review</span>` for the status chip.
+
+**Adding a news item:** copy one `<li>` inside `<ul class="news">`. Keep the
+format `<li><span class="d">Mon. YYYY</span><span>Text</span></li>`.
+
+---
+
+## 5. Design notes
+
+- **Responsive** — the header stacks and the photo shrinks below 660px; the News
+  date column collapses on mobile.
+- **Print-friendly** — `Ctrl/Cmd + P` produces a clean PDF with no shadows or
+  wasted margins. Handy if you ever need a paper copy.
+- **No external requests** — no Google Fonts, no CDN, no tracking. Loads instantly
+  and works offline. The favicon is an inline SVG emoji.
+- **Light theme only.** A dark variant can be added via a `prefers-color-scheme`
+  media query if you want it.
+
+---
+
+## 6. A note on accuracy
+
+Publication statuses on this page mirror the CV exactly:
+
+- *TacEnvelope* and *TACROSS* are marked **Under Review** (submitted to ICRA 2027).
+  Update these the moment you hear back.
+- *Earth–Moon Logistics* is marked **Accepted** (ICCECT 2026).
+- The underwater glider and ROV papers are marked **Published**, with DOIs.
+- The biomimetic underwater robot paper (ICAUS) is **deliberately not listed** —
+  its acceptance has not been confirmed. Add it once your supervisor confirms.
+
+Keep it that way. HKU's supplementary document carries a zero-tolerance
+authenticity clause, and a public homepage is easy for an admissions officer to check.
