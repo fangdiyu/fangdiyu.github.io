@@ -107,6 +107,7 @@
     line-height:0;
   }
   .pub-media video,.pub-media img{width:100%; height:auto; display:block;}
+  .pub-media video + video{border-top:2px solid var(--rule);}
   .pub-body{flex:1 1 auto; min-width:0;}
   .ptitle-link{display:inline-block; text-decoration:none;}
   .ptitle-link:hover{text-decoration:none;}
@@ -303,6 +304,9 @@
       <div class="pub-media">
         <video autoplay loop muted playsinline preload="metadata" poster="files/tacross.jpg">
           <source src="files/tacross.mp4" type="video/mp4">
+        </video>
+        <video autoplay loop muted playsinline preload="metadata" poster="files/tacross-task.jpg">
+          <source src="files/tacross-task.mp4" type="video/mp4">
         </video>
       </div>
       <div class="pub-body">

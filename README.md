@@ -17,10 +17,12 @@ homepage/
 ├── assets/
 │   └── photo.jpg              ← YOU MUST ADD (square, ≥500×500px recommended)
 └── files/
-    ├── tacenvelope.mp4        ← looping thumbnail video (3.7 MB)
+    ├── tacenvelope.mp4        ← looping thumbnail video (2.9 MB, intro trimmed)
     ├── tacenvelope.png        ← its poster frame
     ├── tacross.mp4            ← looping thumbnail video (2.7 MB)
-    └── tacross.jpg            ← its poster frame
+    ├── tacross.jpg            ← its poster frame
+    ├── tacross-task.mp4       ← second video, stacked below tacross.mp4 (0.44 MB)
+    └── tacross-task.jpg       ← its poster frame
 ```
 
 Both `assets/` and `files/` are already created. Just drop your files in.
@@ -37,8 +39,42 @@ themselves, downloaded so the page loads from a single origin:
 | `tacross.mp4` / `tacross.jpg` | `https://tacross-touch-project.github.io/assets/slide1-animation.{mp4,jpg}` |
 | `tacenvelope.mp4` | `https://huhuanzhang.github.io/TacEnvelope-web/assets/videos/task_usb.mp4` |
 | `tacenvelope.png` | `https://huhuanzhang.github.io/TacEnvelope-web/assets/images/task_usb_row.png` |
+| `tacross-task.mp4` / `.jpg` | supplied by the author (raw file was 39 MB / 1920×1560 / 60 fps) |
 
-Total media weight ≈ 7.2 MB — well under GitHub's 100 MB per-file limit.
+Total media weight ≈ 6.7 MB — well under GitHub's 100 MB per-file limit.
+
+### Re-encoding notes (ffmpeg)
+
+The raw TACROSS task clip was 39 MB at 16.5 Mbps — far too heavy for an
+autoplaying thumbnail. It was re-encoded to 0.44 MB:
+
+```bash
+ffmpeg -i raw.mp4 -an -vf "scale=640:-2,fps=30" \
+       -c:v libx264 -preset slow -crf 31 -pix_fmt yuv420p \
+       -movflags +faststart files/tacross-task.mp4
+```
+
+`tacenvelope.mp4` had a 2-second dead intro. Trimming it required a re-encode
+(a stream copy would snap to the previous keyframe and leave part of the wait):
+
+```bash
+ffmpeg -ss 2 -i original.mp4 -an -vf "scale=800:-2,setsar=1" \
+       -c:v libx264 -preset slow -crf 23 -pix_fmt yuv420p \
+       -movflags +faststart files/tacenvelope.mp4
+```
+
+Three flags are easy to forget: `-an` (drop the audio track — these loop
+silently), `-movflags +faststart` (moves the moov atom to the front so playback
+starts before the file finishes downloading), and `setsar=1` (keeps pixels
+square after a non-integer downscale).
+
+A static ffmpeg is available locally via `pip install imageio-ffmpeg`;
+`imageio_ffmpeg.get_ffmpeg_exe()` returns its path.
+
+### Stacking two videos in one entry
+
+Put both `<video>` elements inside the same `.pub-media` div — the CSS rule
+`.pub-media video + video{border-top:2px solid var(--rule)}` draws the divider.
 
 ---
 
