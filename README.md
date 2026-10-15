@@ -26,56 +26,66 @@ circle showing "FY" — so nothing breaks.
 
 ---
 
-## 2. Before you publish — replace the placeholders
+## 2. Live status
+
+**Deployed.** The site is live at **https://yuyfrank.github.io**
+
+| Item | Value |
+|---|---|
+| GitHub account | `yuyfrank` |
+| Repository | https://github.com/yuyfrank/yuyfrank.github.io |
+| Live URL | https://yuyfrank.github.io |
+| Pages source | branch `main`, path `/` |
+| HTTPS | enforced |
+
+### Remaining placeholders
 
 Search `index.html` for these strings and replace them:
 
-| Placeholder | Replace with | Appears in |
+| Placeholder | Replace with | Status |
 |---|---|---|
-| `https://github.com/your-username` | your GitHub URL | header + footer |
-| `https://scholar.google.com/citations?user=YOUR_ID` | your Google Scholar URL | header + footer |
-| `https://orcid.org/0000-0000-0000-0000` | your ORCID iD (or delete the link) | header |
-| `assets/photo.jpg` | your photo (keep the filename) | header |
-| `files/CV_Fangdi_Yu.pdf` | your CV PDF (keep the filename) | header |
+| `https://github.com/your-username` | — | ✅ done (`yuyfrank`) |
+| `https://scholar.google.com/citations?user=YOUR_ID` | your Google Scholar URL | ⬜ TODO |
+| `https://orcid.org/0000-0000-0000-0000` | your ORCID iD (or delete the link) | ⬜ TODO |
+| `assets/photo.jpg` | your photo (keep the filename) | ⬜ TODO |
+| `files/CV_Fangdi_Yu.pdf` | your CV PDF (keep the filename) | ⬜ TODO |
 
 **Don't have a Google Scholar or ORCID profile yet?** Create them — both are free
 and take five minutes. An ORCID iD is genuinely useful on a research CV, and
 Google Scholar will auto-link your papers once they're indexed.
 
----
-
-## 3. Publish on GitHub Pages (5 minutes)
-
-### Option A — user site (`username.github.io`)
-
-The URL will be `https://your-username.github.io`.
+### Publishing updates
 
 ```bash
-# 1. Create a repo named exactly: your-username.github.io
-# 2. In that repo folder:
-git init
-cp -r /path/to/homepage/* .      # copy index.html, assets/, files/
+cd homepage
 git add .
-git commit -m "Add personal homepage"
-git branch -M main
-git remote add origin https://github.com/your-username/your-username.github.io.git
-git push -u origin main
+git commit -m "Update homepage"
+git push
 ```
 
-Then: **Settings → Pages → Source: Deploy from a branch → Branch: `main` / `root` → Save.**
-Live in ~1 minute at `https://your-username.github.io`.
+Pages redeploys automatically within about a minute.
 
-### Option B — project site
+---
 
-The URL will be `https://your-username.github.io/repo-name/`.
+## 3. How it was published (for reference)
 
-Same steps, but the repo can have any name, and enable Pages the same way.
-Note that relative paths (`assets/photo.jpg`) already work correctly in this case.
+This repo is a **user site**, which means the repo name must be exactly
+`<username>.github.io`. GitHub enables Pages automatically for such repos —
+no manual Settings → Pages step was needed.
+
+```bash
+gh repo create yuyfrank.github.io --public --source=. --remote=origin --push
+```
+
+For a **project site** (URL `https://yuyfrank.github.io/repo-name/`), any repo
+name works, but Pages must be enabled manually under
+**Settings → Pages → Source: Deploy from a branch → `main` / `root`**.
+Relative paths (`assets/photo.jpg`) work correctly in both cases.
 
 ### Custom domain
 
 Add a file named `CNAME` containing your domain (e.g. `fangdiyu.com`), then
-configure a CNAME DNS record pointing to `your-username.github.io`.
+configure a CNAME DNS record pointing to `yuyfrank.github.io`.
 
 ---
 
