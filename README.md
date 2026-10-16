@@ -15,7 +15,7 @@ homepage/
 ├── index.html                 ← the entire site
 ├── README.md                  ← this file
 ├── assets/
-│   └── photo.jpg              ← YOU MUST ADD (square, ≥500×500px recommended)
+│   └── photo.jpg              ← 600×600 square head-shot (36 KB)
 └── files/
     ├── tacenvelope.mp4        ← looping thumbnail video (2.9 MB, intro trimmed)
     ├── tacenvelope.png        ← its poster frame
@@ -28,6 +28,24 @@ homepage/
 Both `assets/` and `files/` are already created. Just drop your files in.
 If `assets/photo.jpg` is missing, the page automatically falls back to a grey
 circle showing "FY" — so nothing breaks.
+
+### The avatar (`assets/photo.jpg`)
+
+The CSS renders the avatar as a **186×186 circle** (`border-radius:50%` +
+`object-fit:cover`). Feeding it a portrait photo directly would make the browser
+centre-crop the middle of the image — i.e. the chest, not the face. So the
+source ID photo (854×1280) was pre-cropped to a square that puts the face at
+~65% of the frame height, then resized:
+
+```python
+box = (47, 45, 807, 805)          # side 760, centred horizontally
+im.crop(box).resize((600, 600), Image.LANCZOS).save(
+    'assets/photo.jpg', 'JPEG', quality=88, optimize=True, progressive=True)
+```
+
+600×600 keeps it crisp on 3× retina displays while staying at 36 KB.
+**To swap the photo:** re-crop to a square (face centred, ~60–70% of frame
+height), resize to 600×600, save over the same filename. No HTML change needed.
 
 ### Where the videos came from
 
@@ -106,7 +124,7 @@ Search `index.html` for these strings and replace them:
 |---|---|---|
 | `https://github.com/your-username` | — | ✅ done (`fangdiyu`) |
 | `https://scholar.google.com/citations?user=YOUR_ID` | your Google Scholar URL | ⬜ TODO |
-| `assets/photo.jpg` | your photo (keep the filename) | ⬜ TODO |
+| `assets/photo.jpg` | your photo (keep the filename) | ✅ done (600×600) |
 
 The ORCID and CV header links were removed on request. The email address is
 written out in full rather than shown as the word "Email".
