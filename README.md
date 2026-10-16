@@ -80,15 +80,23 @@ Put both `<video>` elements inside the same `.pub-media` div — the CSS rule
 
 ## 2. Live status
 
-**Deployed.** The site is live at **https://yuyfrank.github.io**
+**Deployed.** The site is live at **https://fangdiyu.github.io**
 
 | Item | Value |
 |---|---|
-| GitHub account | `yuyfrank` |
-| Repository | https://github.com/yuyfrank/yuyfrank.github.io |
-| Live URL | https://yuyfrank.github.io |
+| GitHub account | `fangdiyu` |
+| Repository | https://github.com/fangdiyu/fangdiyu.github.io |
+| Live URL | https://fangdiyu.github.io |
 | Pages source | branch `main`, path `/` |
 | HTTPS | enforced |
+
+> **2026-10-16 — account renamed.** The GitHub account was changed from
+> `yuyfrank` to `fangdiyu`, and the repo renamed `yuyfrank.github.io` →
+> `fangdiyu.github.io` (the repo rename is required — otherwise Pages demotes
+> the site to a project site at `fangdiyu.github.io/yuyfrank.github.io/`).
+> The old URLs (`github.com/yuyfrank`, `yuyfrank.github.io`) now return 404:
+> GitHub does not redirect profile links, and the freed-up old username could
+> be claimed by anyone. All links in `index.html` and the CV were updated.
 
 ### Remaining placeholders
 
@@ -96,7 +104,7 @@ Search `index.html` for these strings and replace them:
 
 | Placeholder | Replace with | Status |
 |---|---|---|
-| `https://github.com/your-username` | — | ✅ done (`yuyfrank`) |
+| `https://github.com/your-username` | — | ✅ done (`fangdiyu`) |
 | `https://scholar.google.com/citations?user=YOUR_ID` | your Google Scholar URL | ⬜ TODO |
 | `assets/photo.jpg` | your photo (keep the filename) | ⬜ TODO |
 
@@ -126,10 +134,10 @@ This repo is a **user site**, which means the repo name must be exactly
 no manual Settings → Pages step was needed.
 
 ```bash
-gh repo create yuyfrank.github.io --public --source=. --remote=origin --push
+gh repo create fangdiyu.github.io --public --source=. --remote=origin --push
 ```
 
-For a **project site** (URL `https://yuyfrank.github.io/repo-name/`), any repo
+For a **project site** (URL `https://fangdiyu.github.io/repo-name/`), any repo
 name works, but Pages must be enabled manually under
 **Settings → Pages → Source: Deploy from a branch → `main` / `root`**.
 Relative paths (`assets/photo.jpg`) work correctly in both cases.
@@ -137,7 +145,7 @@ Relative paths (`assets/photo.jpg`) work correctly in both cases.
 ### Custom domain
 
 Add a file named `CNAME` containing your domain (e.g. `fangdiyu.com`), then
-configure a CNAME DNS record pointing to `yuyfrank.github.io`.
+configure a CNAME DNS record pointing to `fangdiyu.github.io`.
 
 ---
 
