@@ -123,7 +123,7 @@ Search `index.html` for these strings and replace them:
 | Placeholder | Replace with | Status |
 |---|---|---|
 | `https://github.com/your-username` | — | ✅ done (`fangdiyu`) |
-| `https://scholar.google.com/citations?user=YOUR_ID` | your Google Scholar URL | ⬜ TODO |
+| `https://scholar.google.com/citations?user=YOUR_ID` | — | ✅ done (`zarC8PMAAAAJ`) |
 | `assets/photo.jpg` | your photo (keep the filename) | ✅ done (600×600) |
 
 The ORCID and CV header links were removed on request. The email address is
